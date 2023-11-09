@@ -27,6 +27,19 @@
     />
 
     <style>
+      .card {
+        height: 400px;
+      }
+      .card img {
+        height: 250px;
+        object-fit: cover;
+      }
+      .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
       .jumbotron {
         padding-top: 3rem;
         padding-bottom: 3rem;
@@ -159,6 +172,22 @@
               >Load Secondary Images</a
             >
           </p>
+        </div>
+        <div>
+          <form id="serch-img" class="input-group w-50 mx-auto mt-3">
+            <button
+              type="submit"
+              class="input-group-text bg-prymary"
+              for="input-search"
+            >
+              Serch</button
+            ><input
+              id="input-search"
+              class="form-control"
+              type="text"
+              placeholder="what's Image?"
+            />
+          </form>
         </div>
       </section>
 
