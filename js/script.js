@@ -2,12 +2,16 @@ window.onload = () => {
   const photoContainer = document.getElementById("photo-container");
   console.log(photoContainer);
   const loadBtn = document.getElementById("load-btn");
+  const secondBtn = document.getElementById("second-btn");
   console.log(loadBtn);
-  loadBtn.onclick = fetchImgArray;
+  console.log(secondBtn);
+
+  loadBtn.onclick = event => fetchImgArray("tree", event);
+  secondBtn.onclick = event => fetchImgArray("tiger", event);
 };
 
-const fetchImgArray = function () {
-  fetch("https://api.pexels.com/v1/search?query=tree", {
+const fetchImgArray = function (query, event) {
+  fetch("https://api.pexels.com/v1/search?query=" + query, {
     headers: {
       Authorization: "xvsFuKaIuSWRWQiQ2wy6BRSaI0vjGK0EnZmYNpW49muiLz4LSWOStPAE"
     }
