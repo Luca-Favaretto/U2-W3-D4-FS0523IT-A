@@ -40,36 +40,40 @@ const fetchImgArray = function () {
         col.classList = "col-md-4";
         const card = document.createElement("div");
         card.classList = "card mb-4 shadow-sm";
-        card.innerHTML = `
-        <img src="${photo.src.original}" class="card-img-top img-fluid" alt="${photo.alt}">
-        <div class="card-body">
-        <h5 class="card-title">${photo.photographer}</h5>
-        <p class="card-text">
-        ${photo.alt}
-        </p>
-        <div
-          class="d-flex justify-content-between align-items-center"
-        >
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-sm btn-outline-secondary"
-            >
-            View
-            </button>
-            <button
-              type="button"
-              class="btn btn-sm btn-outline-secondary"
-            >
-            Hide
-            </button>
-          </div>
-          <small class="text-muted">${photo.id}</small>
-        </div>
-        `;
 
+        card.innerHTML = `
+        <img src="${photo.src.original}" class="card-img-top img-fluid" alt="${photo.alt}">`;
+        const cardBody = document.createElement("div");
+        cardBody.classList = "card-body";
+        cardBody.innerHTML = `<h5 class="card-title">${photo.photographer}</h5>
+           <p class="card-text">${photo.alt}</p>`;
+        const divBody = document.createElement("div");
+        divBody.classList = "d-flex justify-content-between align-items-center";
+        const divInsideBody = document.createElement("div");
+        divInsideBody.classList = "btn-group";
+        const viewBtn = document.createElement("button");
+        viewBtn.classList = "btn btn-sm btn-outline-secondary";
+        viewBtn.innerText = "View";
+        const hideBtn = document.createElement("button");
+        hideBtn.classList = "btn btn-sm btn-outline-secondary";
+        hideBtn.innerText = "Hide";
+        hideBtn.onclick = () => {
+          col.remove();
+        };
+        const small = document.createElement("small");
+        small.classList = "text-muted";
+        small.innerText = photo.id;
+
+        divInsideBody.appendChild(viewBtn);
+        divInsideBody.appendChild(hideBtn);
+        divBody.appendChild(divInsideBody);
+        divBody.appendChild(small);
+        cardBody.appendChild(divBody);
+        card.appendChild(cardBody);
         col.appendChild(card);
         photoContainer.appendChild(col);
       });
-    });
+    })
+
+    .catch(err => console.log("Errore" + err));
 };
